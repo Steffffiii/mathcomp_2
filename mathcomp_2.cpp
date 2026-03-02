@@ -5,19 +5,14 @@ using namespace std;
 // ----------------------
 // Vector3D Class
 // ----------------------
-
 class Vector3D {
 public:
     double x, y, z;
 
-    // Default constructor
     Vector3D() {
-        x = 0;
-        y = 0;
-        z = 0;
+        x = y = z = 0;
     }
 
-    // Constructor with values
     Vector3D(double xVal, double yVal, double zVal) {
         x = xVal;
         y = yVal;
@@ -29,11 +24,9 @@ public:
     }
 };
 
-
 // ----------------------
 // Matrix Class
 // ----------------------
-
 class Matrix
 {
 public:
@@ -51,15 +44,13 @@ private:
     static const int M = 10;
     static const int N = 10;
     double A[M][N];
-    int m; // actual rows
-    int n; // actual columns
+    int m;
+    int n;
 };
-
 
 // ----------------------
 // Constructor
 // ----------------------
-
 Matrix::Matrix() {
     m = 0;
     n = 0;
@@ -69,11 +60,9 @@ Matrix::Matrix() {
             A[i][j] = 0;
 }
 
-
 // ----------------------
 // Read Matrix
 // ----------------------
-
 void Matrix::read() {
 
     cout << "Enter number of rows: ";
@@ -89,11 +78,9 @@ void Matrix::read() {
             cin >> A[i][j];
 }
 
-
 // ----------------------
 // Print Matrix
 // ----------------------
-
 void Matrix::print() {
 
     for (int i = 0; i < m; i++) {
@@ -103,11 +90,9 @@ void Matrix::print() {
     }
 }
 
-
 // ----------------------
 // Matrix Multiplication
 // ----------------------
-
 Matrix Matrix::multiply(Matrix other) {
 
     Matrix result;
@@ -134,11 +119,9 @@ Matrix Matrix::multiply(Matrix other) {
     return result;
 }
 
-
 // ----------------------
 // Transpose
 // ----------------------
-
 Matrix Matrix::transpose() {
 
     Matrix result;
@@ -153,11 +136,9 @@ Matrix Matrix::transpose() {
     return result;
 }
 
-
 // ----------------------
 // Determinant (3x3 only)
 // ----------------------
-
 double Matrix::determinant() {
 
     if (m != 3 || n != 3) {
@@ -173,11 +154,9 @@ double Matrix::determinant() {
     return det;
 }
 
-
 // ----------------------
 // Inverse (3x3 only)
 // ----------------------
-
 Matrix Matrix::inverse() {
 
     Matrix inv;
@@ -212,11 +191,9 @@ Matrix Matrix::inverse() {
     return inv;
 }
 
-
 // ----------------------
 // Matrix-Vector Multiplication
 // ----------------------
-
 Vector3D Matrix::multiply(Vector3D v) {
 
     Vector3D result;
@@ -233,11 +210,9 @@ Vector3D Matrix::multiply(Vector3D v) {
     return result;
 }
 
-
 // ----------------------
-// Main Function (Testing)
+// Main (Testing)
 // ----------------------
-
 int main() {
 
     Matrix A, B;
@@ -258,23 +233,15 @@ int main() {
     Matrix C = A.multiply(B);
     C.print();
 
-    cout << "\nTranspose of A:\n";
-    Matrix AT = A.transpose();
-    AT.print();
-
-    cout << "\nTranspose of B:\n";
-    Matrix BT = B.transpose();
-    BT.print();
-
     cout << "\nDeterminant of A:\n";
     cout << A.determinant() << endl;
-
-    cout << "\nDeterminant of B:\n";
-    cout << B.determinant() << endl;
 
     cout << "\nInverse of A:\n";
     Matrix Ainv = A.inverse();
     Ainv.print();
+
+    cout << "\nDeterminant of B:\n";
+    cout << B.determinant() << endl;
 
     cout << "\nInverse of B:\n";
     Matrix Binv = B.inverse();
@@ -282,11 +249,6 @@ int main() {
 
     Vector3D v(1, 2, 3);
     cout << "\nA * (1,2,3):\n";
-    Vector3D result = A.multiply(v);
-    result.print();
-
-    Vector3D v(1, 2, 3);
-    cout << "\nB * (1,2,3):\n";
     Vector3D result = A.multiply(v);
     result.print();
 
